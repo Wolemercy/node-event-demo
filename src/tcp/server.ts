@@ -1,5 +1,6 @@
 import * as net from 'net';
 import {ListenOptions} from 'net';
+import {getCodeDefinition} from '../getStatusCodeDefinition';
 
 const server = net.createServer();
 
@@ -13,22 +14,7 @@ server.on('connection', socket => {
   console.log('New client connected');
   socket.on('data', data => {
     const code = data.toString().slice(0, 3);
-    switch (code) {
-      case '404':
-        return socket.write(
-          `Code ${code}: Not found, used when user request for a resource or page that does not exist.\n`
-        );
-      case '500':
-        return socket.write(
-          `Code ${code}: Internal Server, used when web server has an unxpected error.\n`
-        );
-      case '200':
-        return socket.write(`Code ${code}: Good, very good.\n`);
-      default:
-        return socket.write(
-          `I dont know about code "${code}" mate, or I am yet to learn about it \n`
-        );
-    }
+    return socket.write(getCodeDefinition(code));
   });
 
   socket.on('error', error => {
