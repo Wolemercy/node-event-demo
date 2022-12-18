@@ -1,0 +1,27 @@
+{
+  "name": "event-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc && node index.js",
+    "dev": "nodemon src/index.ts",
+    "fix": "gts fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^14.18.35",
+    "gts": "^3.1.1",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.4"
+  }
+}
