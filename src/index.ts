@@ -14,6 +14,12 @@ client.on('data', data => {
 
 app.get('/', async (req, res) => {
   const code = req.query.statusCode as string;
+
+  if (code.length > 3) {
+    res.send({error: 'invalid input'});
+    return;
+  }
+
   let status = false;
 
   OnData.on(code, data => {
